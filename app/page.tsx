@@ -3,77 +3,10 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRadiation, faScissors, faTimeline, faBezierCurve, faSun, faShieldHalved, faShieldVirus, faSyringe, faSmoking, faVirus, faDiagramNext, faWaveSquare, faXmarksLines, faHammer, faRotate, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { config } from '@fortawesome/fontawesome-svg-core'
+import { Card } from "./components/Card";
+import { Search } from "./components/Search";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
-
-export function Card({ title = "title", icon = faRadiation, text = "Some sample text", dna = false, rna = false, meth = false, flipVertical = false, flipHorizontal = false }) {
-  const trueCol = "text-sc-black"
-  const falseCol = "text-sc-white"
-
-  let flipClass = `${flipVertical ? 'pb-4 rotate-180' : 'pt-4'} ${flipHorizontal ? 'fa-flip-horizontal' : ''}`;
-  return (
-    <div className="flex flex-col bg-white w-full h-80 border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-red">
-      <h3 className="text-xl text-center font-semibold uppercase pt-2">{title}</h3>
-      <FontAwesomeIcon icon={icon} className={`text-4xl ${flipClass}`} />
-      <p className="pt-6 px-3 text-center">
-        {text}
-      </p>
-      <div className="flex flex-row mt-auto pb-2">
-        <div className={`px-2 font-semibold text-l ${dna ? trueCol : falseCol}`}>DNA</div>
-        <div className={`px-2 font-semibold text-l ${rna ? trueCol : falseCol}`}>RNA</div>
-        <div className={`px-2 font-semibold text-l ${meth ? trueCol : falseCol}`}>METH</div>
-      </div>
-    </div>
-  )
-}
-
-export function Search() {
-  return (
-    <div className="flex flex-col items-center pt-10">
-      <p className="font-semibold pb-1">Search by Tumorigenic Process</p>
-      <form className="w-9/12 mx-auto">
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full p-4 ps-10 text-sm bg-sc-blue text-sc-white"
-            placeholder="e.g. APOBEC / RAG / Chemotherapy "
-            required={false}
-          />
-          <button
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-sc-white text-sc-red hover:bg-white hover:text-sc-red   focus:ring-4 focus:outline-none  focus:bg-sc-red font-medium rounded-lg text-sm px-4 py-2"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-    </div>)
-
-}
 
 export default function Home() {
   return (
