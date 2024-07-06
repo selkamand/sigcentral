@@ -1,13 +1,23 @@
+'use client'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRadiation } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation'
+
+function transformString(input: string): string {
+    return input.toLowerCase().replace(/ /g, "_");
+}
 
 export function Card({ title = "title", icon = faRadiation, text = "Some sample text", dna = false, rna = false, meth = false, flipVertical = false, flipHorizontal = false }) {
     const trueCol = "text-sc-black"
     const falseCol = "text-sc-white"
+    const router = useRouter()
 
+    let targetPageTitle = transformString(title)
+    let targetPage = `processes/${targetPageTitle}`
     let flipClass = `${flipVertical ? 'pb-4 rotate-180' : 'pt-4'} ${flipHorizontal ? 'fa-flip-horizontal' : ''}`;
     return (
-        <div className="flex flex-col bg-white w-full h-80 border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-red">
+        <div onClick={() => router.push(targetPage)} className="flex flex-col bg-white w-full h-80 border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-red">
             <h3 className="text-xl text-center font-semibold uppercase pt-2">{title}</h3>
             <FontAwesomeIcon icon={icon} className={`text-4xl ${flipClass}`} />
             <p className="pt-6 px-3 text-center">
