@@ -7,9 +7,12 @@ import { Card } from "./components/Card";
 import { Search } from "./components/Search";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
+import { Metadata } from 'next'
+
 
 export default function Home() {
   return (
+
     <main className="flex min-h-screen flex-col items-center justify-between px-20">
       <div>
         <Image

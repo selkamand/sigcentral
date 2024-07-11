@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SigCentral",
-  description: "Scars of the Multiome",
+  description: "Scars of the Multiome"
 };
 
 export default function RootLayout({
