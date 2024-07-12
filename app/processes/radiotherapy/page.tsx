@@ -75,7 +75,7 @@ export default function Home() {
                 The presence of topography agnostic deletions strongly suggests that, as one might expect, radiation can permeate and damage even densely packed heterochromatin which other exogenous mutagens may have more difficulty gaining access to. Although this raises the question of how are DNA repair enzymes accessing this DNA to repair it?
 
                 <br /><br />
-                The increased rate of balanced inversions is also interesting. Most mechanisms that cause inversions (breakage-fusion-bridge, chromothripsis and chromoplexy) lead to 'unbalanced' inversions (inversion is accompanied by a CN change). HR defective Breast cancers show a similar trend.
+                The increased rate of balanced inversions is also interesting. Most mechanisms that cause inversions (breakage-fusion-bridge, chromothripsis and chromoplexy) lead to unbalanced inversions (inversion is accompanied by a CN change). HR defective Breast cancers show a similar trend.
             </p>
 
             <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-4">
@@ -87,7 +87,7 @@ export default function Home() {
             </h2>
             <div className="p-4">
                 <p>
-                    Several radiation-associated genomic scars closely resemble those induced by non-homologous end-joining (NHEJ) repair. This strong resemblance suggests that what we're observing is likely the result of NHEJ repair of radiation-induced damage. Consequently, radiation-associated scars are quite similar to homologous recombination deficiency (HRd) signatures, as NHEJ is upregulated as a fallback mechanism when HR is compromised.
+                    Several radiation-associated genomic scars closely resemble those induced by non-homologous end-joining (NHEJ) repair. This strong resemblance suggests that what we are observing is likely the result of NHEJ repair of radiation-induced damage. Consequently, radiation-associated scars are quite similar to homologous recombination deficiency (HRd) signatures, as NHEJ is upregulated as a fallback mechanism when HR is compromised.
                 </p>
                 <p className="mt-4">
                     This raises an important question: why does radiation-induced damage seem to be preferentially repaired by NHEJ instead of the more efficient HR pathway?
