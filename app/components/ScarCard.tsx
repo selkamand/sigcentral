@@ -1,6 +1,6 @@
 import { faLink, faWrench } from "@fortawesome/free-solid-svg-icons"
-import { faToolbox } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 interface ScarCardProps {
@@ -10,19 +10,37 @@ interface ScarCardProps {
     experiment: string;
     hrefPaper: string;
     hrefTool: string;
-    toolname: string
+    toolname: string;
+    sensitivity: Sensitivity;
+    specificity: Specificity;
+    sensitivityTooltip: string;
+    specificityTooltip: string;
 }
 
-export function ScarCard({ title, measurement, description, experiment, hrefPaper, hrefTool = "", toolname = "" }: ScarCardProps) {
+export function ScarCard({
+    title,
+    measurement,
+    description,
+    experiment,
+    hrefPaper,
+    hrefTool = "",
+    toolname = "",
+    sensitivity, // TODO - implement sensitivity (enum val to string)
+    specificity, // TODO - implement specificity (enum val to string)
+    sensitivityTooltip = "", //TODO - implement tooltip
+    specificityTooltip = "" //TODO - implement tooltip
+}: ScarCardProps) {
 
     let wrenchColour = "text-green-800"
+    let wrenchCircleHover = "hover:bg-red-200"
     if (hrefTool.length == 0) {
         wrenchColour = "text-red-800"
-        toolname = "No tooling available"
+        wrenchCircleHover = "hover:bg-red-200"
+        toolname = "No tool available"
     }
 
     return (
-        <div className="flex flex-col bg-white w-full h-96 border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-blue">
+        <div className="group relative flex flex-col bg-white w-full h-96 border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-blue">
             <h3 className="text-xl text-center font-semibold pt-2">{title}</h3>
             <hr className="h-px my-2 w-full bg-gray-200"></hr>
             <p className="pt-0 font-bold text-sm">Measurement</p>
@@ -55,21 +73,29 @@ export function ScarCard({ title, measurement, description, experiment, hrefPape
                     <span className=" bg-red-100 text-red-800 text-xs font-medium px-1.5 py-0.5 rounded">Low</span>
                 </div>
             </div >
-            <hr className="h-px mt-2 w-full bg-gray-200"></hr>
+            {/* <hr className="h-px mt-2 w-full bg-gray-200"></hr> */}
+            <div className="absolute inset-x-0 bottom-0 flex justify-center transform translate-y-1/2">
+                {/* TODO - center wrench */}
+                <div className={"w-10 h-10 bg-white border-2 rounded-full duration-100 group-hover:border-4 group-hover:border-sc-blue ${wrenchCircleHover}"}>
+                    <span className="text-m font-medium px-1.5 py-0.5 rounded">
+                        < span className="relative group/tool text-center" >
+                            <a href={hrefTool} target="_blank">
+                                <FontAwesomeIcon icon={faWrench} className={`text-m ${wrenchColour}`} />
+                            </a>
+                            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover/tool:opacity-100 transition-opacity duration-200">
+                                {toolname}
+                            </span>
+                        </span >
+                    </span>
+                </div>
+            </div>
             <div>
                 {/* <span className="text-black text-xs font-bold">Tool: </span> */}
-                <span className="text-m font-medium px-1.5 py-0.5 rounded">
-                    < span className="relative group" >
-                        <a href={hrefTool} target="_blank">
-                            <FontAwesomeIcon icon={faWrench} className={`text-m ${wrenchColour}`} />
-                        </a>
-                        <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                            {toolname}
-                        </span>
-                    </span >
-                </span>
+
             </div>
             {/* <a href={hrefTool} target="_blank"><FontAwesomeIcon icon={faWrench} className={`text-m ${wrenchColour}`} /></a> */}
+
+
 
         </div >
     )

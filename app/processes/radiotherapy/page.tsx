@@ -1,6 +1,8 @@
 import { ScarCard } from "../../components/ScarCard";
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import { Sensitivity, Specificity } from "@/app/enums";
+
 config.autoAddCss = false
 
 export default function Home() {
@@ -47,10 +49,10 @@ export default function Home() {
             </h2>
             {/* <h2 className="pt-4"><b>Scars</b></h2> */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-x-6">
-                <ScarCard toolname="raDNA" title="High Indel Burden" measurement="INDEL / SBS ratio" description="Higher number of INDELS. Driven by a an increased burden of deletions, not insertions." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna"></ScarCard>
-                <ScarCard toolname="raDNA" title="High Deletion Burden" measurement="Deletion / Insertion ratio" description="Higher number of small deletions (1-100bp) particularly in reagions of microhomology" experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna"></ScarCard>
-                <ScarCard toolname="raDNA" title="Topography Agnostic Deletions" measurement="Genome-wide deletion distribution and topographical features" description="Radiation induced deletions appear uniformally across the genome irregardless of replication timing and chromotin structure (unlike most other exogenous mutagens)." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna"></ScarCard>
-                <ScarCard toolname="raDNA" title="Increased balanced inversions" measurement="Any balanced inversions present" description="Balanced inversions, a rare type of rearrangement, were present in 92% (11/12) radiation-associated tumours but only 15% of radiation naïve tumours." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna"></ScarCard>
+                <ScarCard toolname="raDNA" title="High Indel Burden" measurement="INDEL / SBS ratio" description="Higher number of INDELS. Driven by a an increased burden of deletions, not insertions." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna" sensitivity={Sensitivity.High} specificity={Specificity.High} sensitivityTooltip={""} specificityTooltip={""}></ScarCard>
+                <ScarCard toolname="raDNA" title="High Deletion Burden" measurement="Deletion / Insertion ratio" description="Higher number of small deletions (1-100bp) particularly in reagions of microhomology" experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna" sensitivity={Sensitivity.High} specificity={Specificity.High} sensitivityTooltip={""} specificityTooltip={""}></ScarCard>
+                <ScarCard toolname="raDNA" title="Topography Agnostic Deletions" measurement="Genome-wide deletion distribution and topographical features" description="Radiation induced deletions appear uniformally across the genome irregardless of replication timing and chromotin structure (unlike most other exogenous mutagens)." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna" sensitivity={Sensitivity.High} specificity={Specificity.High} sensitivityTooltip={""} specificityTooltip={""}></ScarCard>
+                <ScarCard toolname="raDNA" title="Increased balanced inversions" measurement="Any balanced inversions present" description="Balanced inversions, a rare type of rearrangement, were present in 92% (11/12) radiation-associated tumours but only 15% of radiation naïve tumours." experiment="Analysis of 12 radiation-associated tumours from 3 cancer types compared to radiation-naive tumours" hrefPaper="https://www.nature.com/articles/ncomms12605" hrefTool="https://github.com/selkamand/radna" sensitivity={Sensitivity.Low} specificity={Specificity.High} sensitivityTooltip={"Tooltip"} specificityTooltip={"tt"}></ScarCard>
             </div>
 
 
