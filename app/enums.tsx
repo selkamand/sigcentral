@@ -11,3 +11,9 @@ export const enum Specificity {
     Low = "Low",
     Unknown = "Unclear"
 }
+
+export const enum Modality {
+    DNA = "DNA",
+    RNA = "RNA",
+    METHYLATION = "METH"
+}

@@ -1,7 +1,7 @@
 "use client";
 import { faLink, faWrench } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Sensitivity, Specificity } from "../enums";
+import { Modality, Sensitivity, Specificity } from "../enums";
 import { Tooltip } from 'react-tooltip'
 
 
@@ -12,6 +12,8 @@ const sensitivityColourMap: { [key in Sensitivity]: string } = {
     [Sensitivity.High]: "bg-green-100 text-green-800",
     [Sensitivity.Unknown]: "bg-gray-100 text-gray-800"
 };
+
+
 
 // specificity colour map is the exact same as above
 const specificityColourMap: { [key in Specificity]: string } = {
@@ -26,6 +28,10 @@ const specificityColourMap: { [key in Specificity]: string } = {
 interface ScarCardProps {
     title: string;
     measurement: string;
+    biomarkerOf: string;
+    disease: string;
+    modality: Modality;
+    diseaseMondoCode: string;
     description: string;
     experiment: string;
     hrefPaper: string;
@@ -41,6 +47,10 @@ export function ScarCard({
     title,
     measurement,
     description,
+    disease,
+    diseaseMondoCode,
+    biomarkerOf,
+    modality,
     experiment,
     hrefPaper,
     hrefTool = "",
@@ -69,13 +79,19 @@ export function ScarCard({
         <div className="group relative flex z-1 hover:z-40 flex-col bg-white w-full border-r-2 border-4 border-gray-200 rounded-lg shadow items-center hover:shadow-2xl hover:scale-110 transition duration-100 hover:border-8 hover:border-sc-blue">
             <h3 className="text-xl text-center font-semibold pt-2">{title}</h3>
             <hr className="h-px my-2 w-full bg-gray-200"></hr>
+
+            {/* Measurement */}
             <p className="pt-0 font-bold text-sm">Measurement</p>
             <p className="pt-2 text-center">{measurement}</p>
             <hr className="h-px my-2 w-full bg-gray-200"></hr>
+
+            {/* Description */}
             <p className="pt-0 font-bold text-sm">Description</p>
             <p className="text-center pt-2 text-sm lg:text-md">
                 {description}
             </p>
+
+            {/* Experiment (hidden when small) */}
             <div className="hidden xl:block">
                 <hr className="h-px my-2 w-full bg-gray-200"></hr>
                 <p className="pt-0 text-center font-bold text-sm">Experiment <a href={hrefPaper} target="_blank"><FontAwesomeIcon icon={faLink} className="text-sm" /></a></p>
@@ -84,24 +100,37 @@ export function ScarCard({
                 </p>
             </div>
             <hr className="h-px my-2 w-full bg-gray-200"></hr>
-            <div className="grid grid-cols-2 gap-2">
-                <div className=" bg-green-100 text-green-800 text-center text-xs font-medium px-2.5 py-0.5 rounded">Pan-Cancer</div>
-                <div className=" bg-blue-100 text-blue-800 text-center text-xs font-medium px-2.5 py-0.5 rounded">DNA</div>
+
+            <div className="grid grid-cols-3 gap-x-2 gap-y-1 pt-2">
+                <div className=" bg-white text-black text-center text-xs font-bold px-2.5 py-0.5 rounded">Disease</div>
+                <div className=" bg-white text-black text-center text-xs font-bold px-2.5 py-0.5 rounded">Modality</div>
+                <div className=" bg-white text-black text-center text-xs font-bold px-2.5 py-0.5 rounded">Biomarker Of</div>
+                <div className=" bg-white text-black border-2 border-black border-dotted text-center text-xs font-medium px-2.5 py-0.5 rounded">{disease}</div>
+                <div className=" bg-white text-black border-2 border-black border-dotted text-center text-xs font-medium px-2.5 py-0.5 rounded">{modality}</div>
+                <div className=" bg-white text-black border-2 border-black border-dotted text-center text-xs font-medium px-2.5 py-0.5 rounded">{biomarkerOf}</div>
             </div>
-            <hr className="h-px mt-2 w-full bg-gray-200"></hr>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1 pt-4">
+                <div className=" bg-white text-black text-center text-xs font-bold px-2.5 py-0.5 rounded">Sensitivity</div>
+                <div className=" bg-white text-black text-center text-xs font-bold px-2.5 py-0.5 rounded">Specificity</div>
+                <span data-tooltip-id={uniqueSensitivityTooltipId} className={`${colorSensitivity} text-xs hover:border-solid border-dashed border-2 border-black font-medium text-center px-1.5 py-0.5 rounded`}>{sensitivity}</span>
+                <span data-tooltip-id={uniqueSpecificityTooltipId} className={`${colorSpecificity} text-xs hover:border-solid border-dashed border-2 border-black font-medium text-center px-1.5 py-0.5 rounded`}>{specificity}</span>
+            </div>
 
-            {/* Specificity and Sensitivity */}
-            <div className="grid grid-cols-2 gap-2 mt-0">
+            {/* Biomarker Of
+            <div>
                 <div>
-                    <span className="text-black text-xs font-bold">Sensitivity: </span>
-                    <span data-tooltip-id={uniqueSensitivityTooltipId} className={`${colorSensitivity} z-50 text-xs font-medium px-1.5 py-0.5 rounded`}>{sensitivity}</span>
+                    <span className="text-black text-xs font-bold">Biomarker of: </span>
+                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{biomarkerOf}</span>
                 </div>
                 <div>
-                    <span className="text-black text-xs font-bold">Specificity: </span>
-                    <span data-tooltip-id={uniqueSpecificityTooltipId} className={`${colorSpecificity} z-50 text-xs font-medium px-1.5 py-0.5 rounded`}>{specificity}</span>
+                    <span className="text-black text-xs font-bold">Disease Type: </span>
+                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{disease}</span>
                 </div>
-            </div >
-
+                <div>
+                    <span className="text-black text-xs font-bold">Modality: </span>
+                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{modality}</span>
+                </div>
+            </div> */}
             <div className="py-4"></div>
             {/* Tool Link: Wrench in Circle */}
             <div className="absolute inset-x-0 bottom-0 flex justify-center transform translate-y-1/2">
