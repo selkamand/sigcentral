@@ -42,8 +42,8 @@ export function ScarCard({
     hrefPaper,
     hrefTool = "",
     toolName = "",
-    sensitivity, // TODO - implement sensitivity (enum val to string)
-    specificity, // TODO - implement specificity (enum val to string)
+    sensitivity,
+    specificity,
     sensitivityTooltip = "", //TODO - implement tooltip
     specificityTooltip = "" //TODO - implement tooltip
 }: ScarCardProps) {
@@ -93,9 +93,8 @@ export function ScarCard({
                 </div>
             </div >
             <div className="py-4"></div>
-            {/* <hr className="h-px mt-2 w-full bg-gray-200"></hr> */}
+            {/* Tool Link: Wrench in Circle */}
             <div className="absolute inset-x-0 bottom-0 flex justify-center transform translate-y-1/2">
-                {/* TODO - center wrench */}
                 <div className={`flex items-center justify-center w-10 h-10 bg-white border-2 rounded-full duration-100 group-hover:border-4 group-hover:border-sc-blue ${wrenchCircleHover}`}>
                     <span className="text-m font-medium px-1.5 py-0.5 rounded">
                         < span className="relative group/tool text-center" >
