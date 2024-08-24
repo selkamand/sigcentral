@@ -1,13 +1,13 @@
 export const enum Sensitivity {
-    High,
-    Moderate,
-    Low,
-    Unknown
+    High = "High",
+    Moderate = "Moderate",
+    Low = "Low",
+    Unknown = "Unclear"
 }
 
 export const enum Specificity {
-    High,
-    Moderate,
-    Low,
-    Unknown
+    High = "High",
+    Moderate = "Moderate",
+    Low = "Low",
+    Unknown = "Unclear"
 }
