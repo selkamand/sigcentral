@@ -2,6 +2,7 @@ import { ScarCard } from "../../components/ScarCard";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { Modality, Sensitivity, Specificity } from "@/app/enums";
+import { MutSigCard } from "@/app/components/MutSigCard";
 
 config.autoAddCss = false
 
@@ -104,6 +105,14 @@ export default function Home() {
                 </p>
             </div>
 
+            <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-4">
+                <span className="flex-grow block border-t border-black"></span>
+                <span className="flex-none block mx-4 px-4 py-2.5 text-2xl rounded leading-none font-medium bg-black text-white">
+                    Related Mutational Signatures
+                </span>
+                <span className="flex-grow block border-t border-black"></span>
+            </h2>
+            <MutSigCard signature="ID8" database="COSMIC Human Cancer Database" aetiology="DSB repair by NHEJ / TOP2A mutation" href="https://cancer.sanger.ac.uk/signatures/id/id8/" hrefTool="https://github.com/selkamand/sigstash" toolName="sigstash"></MutSigCard>
         </main >
     );
 }

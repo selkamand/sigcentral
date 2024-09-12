@@ -69,10 +69,12 @@ export function ScarCard({
 
     let wrenchColour = "text-green-800"
     let wrenchCircleHover = "hover:bg-green-200"
+    let toolPrefix = "Identify using"
     if (hrefTool.length == 0) {
         wrenchColour = "text-red-800"
         wrenchCircleHover = "hover:bg-red-200"
         toolName = "No tool available"
+        toolPrefix = ""
     }
 
     return (
@@ -115,22 +117,6 @@ export function ScarCard({
                 <span data-tooltip-id={uniqueSensitivityTooltipId} className={`${colorSensitivity} text-xs hover:border-solid border-dashed border-2 border-black font-medium text-center px-1.5 py-0.5 rounded`}>{sensitivity}</span>
                 <span data-tooltip-id={uniqueSpecificityTooltipId} className={`${colorSpecificity} text-xs hover:border-solid border-dashed border-2 border-black font-medium text-center px-1.5 py-0.5 rounded`}>{specificity}</span>
             </div>
-
-            {/* Biomarker Of
-            <div>
-                <div>
-                    <span className="text-black text-xs font-bold">Biomarker of: </span>
-                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{biomarkerOf}</span>
-                </div>
-                <div>
-                    <span className="text-black text-xs font-bold">Disease Type: </span>
-                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{disease}</span>
-                </div>
-                <div>
-                    <span className="text-black text-xs font-bold">Modality: </span>
-                    <span className={`text-xs font-medium px-0 py-0.5 rounded bg-gray-100 text-gray-800`}>{modality}</span>
-                </div>
-            </div> */}
             <div className="py-4"></div>
             {/* Tool Link: Wrench in Circle */}
             <div className="absolute inset-x-0 bottom-0 flex justify-center transform translate-y-1/2">
@@ -145,13 +131,11 @@ export function ScarCard({
                 </div>
             </div>
             <div>
-                {/* <span className="text-black text-xs font-bold">Tool: </span> */}
-
             </div>
             {/* Tooltips */}
             <Tooltip id={uniqueSensitivityTooltipId} place="bottom" data-tooltip-position-strategy="absolute" content={sensitivityTooltip} />
             <Tooltip id={uniqueSpecificityTooltipId} place="bottom" data-tooltip-position-strategy="absolute" content={specificityTooltip} />
-            <Tooltip id={uniqueToolTooltipId} place="bottom" data-tooltip-position-strategy="absolute" content={`Identify using ${toolName}`} border="4px solid black" style={{ backgroundColor: "white", color: "black" }} />
+            <Tooltip id={uniqueToolTooltipId} place="bottom" data-tooltip-position-strategy="absolute" content={`${toolPrefix} ${toolName}`} border="4px solid black" style={{ backgroundColor: "white", color: "black" }} />
         </div >
     )
 }
